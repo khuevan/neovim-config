@@ -141,6 +141,23 @@ mason_lspconfig.setup({
   automatic_installation = true,
 })
 
+-- Auto-install all LSP servers on first run
+vim.api.nvim_create_autocmd("User", {
+  pattern = "MasonLangServerInstallComplete",
+  once = true,
+  callback = function()
+    -- On first completion, show a notification
+    vim.defer_fn(function()
+      local count = #vim.tbl_keys(servers)
+      vim.notify(
+        "LSP servers installed successfully! (" .. count .. " servers)",
+        vim.log.levels.INFO,
+        { title = "Neovim Setup" }
+      )
+    end, 1000)
+  end,
+})
+
 local capabilities = vim.tbl_deep_extend(
   "force",
   {},

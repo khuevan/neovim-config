@@ -29,24 +29,9 @@ git clone https://github.com/khuevan/neovim-config.git ~/.config/nvim
 nvim
 ```
 
-Plugins will be automatically installed on first launch.
+Plugins and language servers will be **automatically installed** on first launch.
 
-### 4. Install Language Servers
-
-After Neovim opens, run:
-
-```
-:MasonInstallAll
-```
-
-Or install individual servers:
-
-```
-:MasonInstall pyright
-:MasonInstall rust-analyzer
-:MasonInstall ruff
-:MasonInstall lua_ls
-```
+> Note: All LSP servers (Python, Rust, Lua, etc.) are installed automatically via Mason.
 
 ---
 
