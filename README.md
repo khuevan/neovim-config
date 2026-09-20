@@ -20,7 +20,7 @@ Move-Item $env:APPDATA\nvim $env:APPDATA\nvim.bak
 
 # Clone repo
 ```bash
-git clone https://github.com/khuevan/nvim-config.git ~/.config/nvim
+git clone https://github.com/khuevan/neovim-config.git ~/.config/nvim
 ```
 
 ### 3. Open Neovim
