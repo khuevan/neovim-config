@@ -20,16 +20,7 @@ Move-Item $env:APPDATA\nvim $env:APPDATA\nvim.bak
 
 # Clone repo
 ```bash
-git clone https://github.com/khuevan/nvim-setup.git ~/.config/nvim
-```
-# Or copy folder
-```bash
-# Linux/Mac
-cp -r nvim-setup ~/.config/nvim
-```
-```bash
-# Windows
-Copy-Item -Path "d:\projects\personal\nvim-setup" -Destination "$env:APPDATA\nvim" -Recurse
+git clone https://github.com/khuevan/nvim-config.git ~/.config/nvim
 ```
 
 ### 3. Open Neovim
