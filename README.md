@@ -38,8 +38,6 @@ Then Neovim will look for config at `~/.config/nvim`.
 # Clone repo (config will be at ~/.config/nvim)
 git clone https://github.com/khuevan/neovim-config.git "$HOME\.config\nvim"
 
-# Or copy folder
-Copy-Item -Path "d:\projects\personal\nvim-setup" -Destination "$HOME\.config\nvim" -Recurse
 ```
 
 ### 4. Open Neovim

@@ -70,7 +70,7 @@ return {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+      -- Note: telescope-fzf-native.nvim removed (requires 'make' on Windows)
     },
     config = function()
       require("config.telescope")
@@ -111,14 +111,6 @@ return {
     "williamboman/mason-lspconfig.nvim",
   },
 
-  -- LSP Lines (virtual text decorations)
-  {
-    "https://git.sr.ht/~whynote/lsp-lines.nvim",
-    config = function()
-      require("lsp-lines").setup()
-    end,
-  },
-
   -- ===========================================================================
   -- Python Support
   -- ===========================================================================
@@ -129,10 +121,7 @@ return {
     dependencies = "mfussenegger/nvim-dap",
   },
 
-  -- Python formatting
-  {
-    "vitalihirz/ruff-python-lsp",
-  },
+  -- Python formatting (handled by Mason's ruff + ruff-lsp)
 
   -- ===========================================================================
   -- Rust Support
