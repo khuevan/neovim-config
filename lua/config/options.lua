@@ -75,14 +75,15 @@ vim.opt.spell = false
 vim.opt.spelllang = "en"
 
 -- Backup & Swap directories
-vim.opt.backupdir = vim.fn.stdpath("data") .. "/backup"
-vim.opt.directory = vim.fn.stdpath("data") .. "/swap"
-vim.opt.undodir = vim.fn.stdpath("data") .. "/undo"
+local data_path = vim.fn.stdpath("data")
+vim.opt.backupdir = data_path .. "/backup"
+vim.opt.directory = data_path .. "/swap"
+vim.opt.undodir = data_path .. "/undo"
 
 -- Create directories if they don't exist
-vim.fn.mkdir(vim.opt.backupdir:get(), "p")
-vim.fn.mkdir(vim.opt.directory:get(), "p")
-vim.fn.mkdir(vim.opt.undodir:get(), "p")
+vim.fn.mkdir(data_path .. "/backup", "p")
+vim.fn.mkdir(data_path .. "/swap", "p")
+vim.fn.mkdir(data_path .. "/undo", "p")
 
 -- =============================================================================
 -- Key Remapping & Abbreviations

@@ -12,18 +12,37 @@ Just my personal Neovim configuration.
 # Linux/Mac
 mv ~/.config/nvim ~/.config/nvim.bak
 
-# Windows
-Move-Item $env:APPDATA\nvim $env:APPDATA\nvim.bak
+# Windows (default path)
+Move-Item $env:LOCALAPPDATA\nvim $env:LOCALAPPDATA\nvim.bak
 ```
 
-### 2. Clone or copy this config
+### 2. Setup config path
 
-# Clone repo
+> **Personal Note:** I prefer keeping Neovim config at `$HOME\.config\nvim` instead of the default `$env:LOCALAPPDATA\nvim` for consistency with Linux/macOS and other dotfiles.
+
+**Set environment variable (PowerShell)**
+```powershell
+# Add to your PowerShell profile (~/.config/powershell/Microsoft.PowerShell_profile.ps1)
+$env:XDG_CONFIG_HOME = "$HOME\.config"
+```
+or
+```powershell
+[Environment]::SetEnvironmentVariable("XDG_CONFIG_HOME", "$HOME\.config", "User")
+```
+
+Then Neovim will look for config at `~/.config/nvim`.
+
+### 3. Clone or copy this config
+
 ```bash
-git clone https://github.com/khuevan/neovim-config.git ~/.config/nvim
+# Clone repo (config will be at ~/.config/nvim)
+git clone https://github.com/khuevan/neovim-config.git "$HOME\.config\nvim"
+
+# Or copy folder
+Copy-Item -Path "d:\projects\personal\nvim-setup" -Destination "$HOME\.config\nvim" -Recurse
 ```
 
-### 3. Open Neovim
+### 4. Open Neovim
 
 ```bash
 nvim
