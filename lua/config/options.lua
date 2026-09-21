@@ -3,8 +3,7 @@
 -- =============================================================================
 
 -- Font (match Cursor settings)
-vim.opt.guifont = "CaskaydiaCove Nerd Font Mono:h11"
-vim.opt.guifontwide = "CaskaydiaCove Nerd Font Mono:h11"
+vim.opt.guifont = "JetBrainsMono Nerd Font:h11"
 
 -- Number & Cursor
 vim.opt.number = true
@@ -212,3 +211,71 @@ vim.api.nvim_exec(
   ]],
   false
 )
+
+-- =============================================================================
+-- Cursor/VSCode-like Highlights
+-- =============================================================================
+
+-- Selection colors (Cursor/VSCode style)
+vim.api.nvim_set_hl(0, "Visual", { bg = "#264f78" })
+
+-- Cursor line
+vim.api.nvim_set_hl(0, "CursorLine", { bg = "#252526" })
+vim.api.nvim_set_hl(0, "CursorColumn", { bg = "#252526" })
+
+-- Search highlighting
+vim.api.nvim_set_hl(0, "Search", { bg = "#264f78", fg = "#ffffff" })
+vim.api.nvim_set_hl(0, "IncSearch", { bg = "#515c6a", fg = "#ffffff" })
+vim.api.nvim_set_hl(0, "CurSearch", { bg = "#515c6a", fg = "#ffffff" })
+
+-- Status line
+vim.api.nvim_set_hl(0, "StatusLine", { bg = "#007acc", fg = "#ffffff" })
+vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "#3c3c3c", fg = "#cccccc" })
+
+-- Tab line
+vim.api.nvim_set_hl(0, "TabLine", { bg = "#1e1e1e", fg = "#808080" })
+vim.api.nvim_set_hl(0, "TabLineFill", { bg = "#1e1e1e" })
+vim.api.nvim_set_hl(0, "TabLineSel", { bg = "#094e6e", fg = "#ffffff" })
+
+-- Pmenu (popup menu)
+vim.api.nvim_set_hl(0, "Pmenu", { bg = "#252526", fg = "#cccccc" })
+vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#094e6e", fg = "#ffffff" })
+vim.api.nvim_set_hl(0, "PmenuSbar", { bg = "#3c3c3c" })
+vim.api.nvim_set_hl(0, "PmenuThumb", { bg = "#808080" })
+
+-- Wild menu
+vim.api.nvim_set_hl(0, "WildMenu", { bg = "#264f78", fg = "#ffffff" })
+
+-- Line numbers
+vim.api.nvim_set_hl(0, "LineNr", { fg = "#5a5a5a" })
+vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#c6c6c6", bg = "#252526" })
+vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "#4a4a4a" })
+vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "#4a4a4a" })
+
+-- Fold
+vim.api.nvim_set_hl(0, "Folded", { bg = "#1e1e1e", fg = "#5a5a5a" })
+vim.api.nvim_set_hl(0, "FoldColumn", { bg = "#1e1e1e", fg = "#5a5a5a" })
+
+-- Borders
+vim.api.nvim_set_hl(0, "Normal", { bg = "#1e1e1e", fg = "#d4d4d4" })
+vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#1e1e1e", fg = "#3c3c3c" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#252526", fg = "#d4d4d4" })
+
+-- Scrollbar
+vim.api.nvim_set_hl(0, "Scrollbar", { bg = "#1e1e1e", fg = "#4a4a4a" })
+vim.api.nvim_set_hl(0, "ScrollbarFake", { bg = "#3c3c3c", fg = "#5a5a5a" })
+
+-- Matchparen
+vim.api.nvim_set_hl(0, "MatchParen", { bg = "#264f78", fg = "#ffffff", bold = true })
+
+-- Msgseparator
+vim.api.nvim_set_hl(0, "MsgSeparator", { bg = "#1e1e1e", fg = "#3c3c3c" })
+
+-- Diff
+vim.api.nvim_set_hl(0, "DiffAdd", { bg = "#264f78" })
+vim.api.nvim_set_hl(0, "DiffChange", { bg = "#264f78" })
+vim.api.nvim_set_hl(0, "DiffDelete", { bg = "#f44747" })
+vim.api.nvim_set_hl(0, "DiffText", { bg = "#007acc" })
+
+-- Directory
+vim.api.nvim_set_hl(0, "Directory", { fg = "#007acc" })

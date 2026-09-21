@@ -157,3 +157,53 @@ nvim/
 
 See [KEYBINDINGS.md](./KEYBINDINGS.md) for the full keybindings reference.
 
+---
+
+## Fonts
+
+This config uses **Nerd Fonts** for icons and ligatures. Recommended fonts:
+
+| Font | Download |
+|------|----------|
+| JetBrainsMono Nerd Font | `winget install DEVCOM.JetBrainsMonoNerdFont` |
+| FiraCode Nerd Font | https://www.nerdfonts.com/font-downloads |
+| Caskaydia Cove Nerd Font | https://www.nerdfonts.com/font-downloads |
+
+### Installation
+
+**Windows (winget):**
+```powershell
+winget install DEVCOM.JetBrainsMonoNerdFont
+```
+
+**Windows (manual):**
+1. Go to https://www.nerdfonts.com/font-downloads
+2. Download your preferred font (e.g., FiraCode or JetBrains Mono)
+3. Extract and install the `.ttf` file
+
+**Linux/Mac:**
+```bash
+# Using homebrew
+brew install font-fira-code-nerd-font
+# or
+brew install font-jetbrains-mono-nerd-font
+```
+
+### Terminal Configuration
+
+After installing, set the font in your terminal:
+
+**Windows Terminal:** Settings → Appearance → Font → Select the Nerd Font
+
+**Alacritty:** Add to `alacritty.toml`:
+```toml
+[font]
+normal = { family = "JetBrainsMono Nerd Font" }
+size = 11
+```
+
+**Neovim GUI:** The font is set in `lua/config/options.lua`:
+```lua
+vim.opt.guifont = "JetBrainsMono Nerd Font:h11"
+```
+

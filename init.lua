@@ -11,6 +11,7 @@ require("config.options")
 require("config.lazy")
 
 -- Load plugin configurations
+require("config.nvim-web-devicons")
 require("config.lsp")
 require("config.mason")
 require("config.tokyonight")

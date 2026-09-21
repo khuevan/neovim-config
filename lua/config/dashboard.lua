@@ -21,63 +21,71 @@ db.setup({
       "",
     },
     shortcut_mappings = {
-        i = { fallback = false },
-        n = { fallback = false },
+      i = { fallback = false },
+      n = { fallback = false },
+    },
+
+    center = {
+      {
+        desc = "Find Files",
+        key = "f",
+        action = "Telescope find_files",
+        icon = "🔍 ",
       },
-  
-      center = {
-        {
-          desc = "Find Files",
-          key = "f",
-          action = "Telescope find_files",
-        },
-        {
-          desc = "Recent Files",
-          key = "r",
-          action = "Telescope oldfiles",
-        },
-        {
-          desc = "Neovim Config",
-          key = "c",
-          action = "edit ~/.config/nvim/init.lua",
-        },
-        {
-          desc = "Git",
-          key = "g",
-          action = "Neogit",
-        },
-        {
-          desc = "Terminal",
-          key = "t",
-          action = "ToggleTerm",
-        },
-        {
-          desc = "LSP & Tools",
-          key = "m",
-          action = "Mason",
-        },
-        {
-          desc = "Keymaps",
-          key = "k",
-          action = "Telescope keymaps",
-        },
+      {
+        desc = "Recent Files",
+        key = "r",
+        action = "Telescope oldfiles",
+        icon = "📁 ",
       },
-  
-      packages = {},
-      project = {},
-  
-      mru = {
-        limit = 10,
-        cwd = "~",
+      {
+        desc = "Git Status",
+        key = "g",
+        action = "Neogit",
+        icon = "📦 ",
       },
-  
-      footer = {
-        "",
-        "chmod +x ~/.config/nvim 👀",
-        "",
+      {
+        desc = "Terminal",
+        key = "t",
+        action = "ToggleTerm",
+        icon = "💻 ",
+      },
+      {
+        desc = "LSP & Tools",
+        key = "m",
+        action = "Mason",
+        icon = "🛠️ ",
+      },
+      {
+        desc = "Keymaps",
+        key = "k",
+        action = "Telescope keymaps",
+        icon = "⌨️ ",
       },
     },
-  })
+
+    packages = {},
+    project = {},
+
+    mru = {
+      limit = 10,
+      cwd = "~",
+    },
+
+    footer = {
+      "",
+      "chmod +x ~/.config/nvim 👀",
+      "",
+    },
+  },
+})
+
+-- Customize dashboard colors to match Cursor
+vim.api.nvim_set_hl(0, "DashboardHeader", { fg = "#007acc" })
+vim.api.nvim_set_hl(0, "DashboardCenter", { fg = "#d4d4d4" })
+vim.api.nvim_set_hl(0, "DashboardShortcut", { fg = "#4ec9b0" })
+vim.api.nvim_set_hl(0, "DashboardFooter", { fg = "#808080" })
+vim.api.nvim_set_hl(0, "DashboardIcon", { fg = "#007acc" })
   
 
 -- Disable auto Telescope on dashboard
