@@ -2,6 +2,10 @@
 -- General Neovim Settings
 -- =============================================================================
 
+-- Font (match Cursor settings)
+vim.opt.guifont = "CaskaydiaCove Nerd Font Mono:h11"
+vim.opt.guifontwide = "CaskaydiaCove Nerd Font Mono:h11"
+
 -- Number & Cursor
 vim.opt.number = true
 vim.opt.relativenumber = true

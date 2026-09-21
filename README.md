@@ -12,7 +12,7 @@ Just my personal Neovim configuration.
 # Linux/Mac
 mv ~/.config/nvim ~/.config/nvim.bak
 
-# Windows (default path)
+# Windows
 Move-Item $env:LOCALAPPDATA\nvim $env:LOCALAPPDATA\nvim.bak
 ```
 
@@ -20,24 +20,20 @@ Move-Item $env:LOCALAPPDATA\nvim $env:LOCALAPPDATA\nvim.bak
 
 > **Personal Note:** I prefer keeping Neovim config at `$HOME\.config\nvim` instead of the default `$env:LOCALAPPDATA\nvim` for consistency with Linux/macOS and other dotfiles.
 
-**Set environment variable (PowerShell)**
+**PowerShell** — add to your profile:
 ```powershell
-# Add to your PowerShell profile (~/.config/powershell/Microsoft.PowerShell_profile.ps1)
 $env:XDG_CONFIG_HOME = "$HOME\.config"
 ```
-or
+
+Or set permanently:
 ```powershell
 [Environment]::SetEnvironmentVariable("XDG_CONFIG_HOME", "$HOME\.config", "User")
 ```
 
-Then Neovim will look for config at `~/.config/nvim`.
-
-### 3. Clone or copy this config
+### 3. Clone config
 
 ```bash
-# Clone repo (config will be at ~/.config/nvim)
 git clone https://github.com/khuevan/neovim-config.git "$HOME\.config\nvim"
-
 ```
 
 ### 4. Open Neovim
@@ -46,24 +42,21 @@ git clone https://github.com/khuevan/neovim-config.git "$HOME\.config\nvim"
 nvim
 ```
 
-Plugins and language servers will be **automatically installed** on first launch.
-
-> Note: All LSP servers (Python, Rust, Lua, etc.) are installed automatically via Mason.
+Plugins and language servers are installed automatically via LazyVim plugin manager.
 
 ---
 
 ## Structure
 
 ```
-nvim-setup/
-|-- init.lua                    # Entry point, loads configuration
-|-- README.md                   # This file
+nvim/
+|-- init.lua                    # Entry point
 |-- lua/
-|   |-- config/                # Detailed config for each plugin
-|   |   |-- options.lua        # General settings (indent, search, ...)
+|   |-- config/                # Plugin configurations
+|   |   |-- options.lua        # General settings
 |   |   |-- lazy.lua           # Plugin manager
-|   |   |-- lsp.lua            # Language Server Protocol
-|   |   |-- mason.lua          # LSP/DAP/Formatter installer
+|   |   |-- lsp.lua            # LSP configuration
+|   |   |-- mason.lua          # Package installer
 |   |   |-- cmp.lua            # Completion engine
 |   |   |-- treesitter.lua     # Syntax highlighting
 |   |   |-- telescope.lua      # Fuzzy finder
@@ -71,19 +64,22 @@ nvim-setup/
 |   |   |-- lualine.lua        # Status line
 |   |   |-- bufferline.lua     # Tab bar
 |   |   |-- tokyonight.lua     # Color theme
-|   |   |-- gitsigns.lua       # Git gutter signs
+|   |   |-- gitsigns.lua       # Git signs
 |   |   |-- neogit.lua         # Git TUI
-|   |   |-- toggleterm.lua     # Integrated terminal
-|   |   |-- harpoon.lua        # Quick file navigation
+|   |   |-- toggleterm.lua     # Terminal
+|   |   |-- conform.lua        # Formatter
+|   |   |-- iron.lua           # Python REPL
+|   |   |-- pytest.lua         # Pytest runner
+|   |   |-- virtualenv.lua     # Virtualenv manager
+|   |   |-- jupyter.lua        # Jupyter integration
+|   |   |-- rust-tools.lua     # Rust tools
 |   |   |-- whichkey.lua       # Keybinding hints
 |   |   |-- comment.lua        # Comment toggle
 |   |   |-- flash.lua          # Enhanced jump
-|   |   |-- todo-comments.lua  # TODO/FIX highlighting
-|   |   |-- rust-tools.lua     # Rust tools
-|   |   |-- codeium.lua        # AI completion
-|   |   |-- oil.lua            # File manager in buffer
-|   |   |-- indent-blankline.lua # Indent guides
-|   |   |-- lazygit.lua        # LazyGit integration
+|   |   |-- todo-comments.lua  # TODO highlighting
+|   |   |-- dashboard.lua      # Startup screen
+|   |   |-- lazygit.lua        # LazyGit
+|   |   |-- indent-blankline.lua
 |   |
 |   |-- plugins/
 |       |-- init.lua           # Plugin list
@@ -101,46 +97,47 @@ nvim-setup/
 | [lualine](https://github.com/nvim-lualine/lualine.nvim) | Status line with LSP indicators |
 | [bufferline](https://github.com/akinsho/bufferline.nvim) | Tab management |
 | [nvim-tree](https://github.com/nvim-tree/nvim-tree.lua) | File explorer |
-| [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim) | Visual indentation guides |
+| [dashboard](https://github.com/glepnir/dashboard-nvim) | Startup screen |
+| [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim) | Indent guides |
 
-### Fuzzy Finding & Navigation
+### Navigation
 
 | Plugin | Description |
 |--------|-------------|
 | [telescope](https://github.com/nvim-telescope/telescope.nvim) | Find files, grep, buffers, LSP symbols |
 | [flash](https://github.com/folke/flash.nvim) | Jump with quick labels |
-| [harpoon](https://github.com/ThePrimeagen/harpoon) | Quick file switching |
 
 ### Language Support
 
 | Plugin | Description |
 |--------|-------------|
 | [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) | LSP client |
-| [mason](https://github.com/williamboman/mason.nvim) | LSP/DAP/Formatter manager |
+| [mason](https://github.com/williamboman/mason.nvim) | LSP/Formatter manager |
 | [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) | Completion engine |
-| [treesitter](https://github.com/nvim-treesitter/nvim-treesitter) | Advanced syntax highlighting |
-| [rust-tools](https://github.com/simrat39/rust-tools.nvim) | Rust tools (hover, run, debug) |
+| [treesitter](https://github.com/nvim-treesitter/nvim-treesitter) | Syntax highlighting |
+| [conform.nvim](https://github.com/stevearc/conform.nvim) | Code formatter |
 
 ### Python
 
-| Plugin | Description |
-|--------|-------------|
-| [ruff](https://github.com/ekolbel/ruff.nvim) | Ultra-fast linting and formatting |
+| Tool | Description |
+|------|-------------|
 | [pyright](https://github.com/microsoft/pyright) | Type checking |
-| [nvim-dap-python](https://github.com/mfussenegger/nvim-dap-python) | Debugging |
+| [ruff](https://github.com/astral-sh/ruff) | Fast linting/formatting |
+| [iron.nvim](https://github.com/Vigemus/iron.nvim) | REPL integration |
+| pytest | Test runner |
 
 ### Rust
 
-| Plugin | Description |
-|--------|-------------|
+| Tool | Description |
+|------|-------------|
 | [rust-analyzer](https://github.com/rust-lang/rust-analyzer) | LSP for Rust |
-| [rust-tools](https://github.com/simrat39/rust-tools.nvim) | Hover actions, inlay hints, macro expansion |
+| [rust-tools](https://github.com/simrat39/rust-tools.nvim) | Hover, run, debug |
 
 ### Git
 
 | Plugin | Description |
 |--------|-------------|
-| [neogit](https://github.com/TimUntersberger/neogit) | Git TUI |
+| [neogit](https://github.com/NeogitOrg/neogit) | Git TUI |
 | [gitsigns](https://github.com/lewis6991/gitsigns.nvim) | Git signs in gutter |
 | [lazygit](https://github.com/kdheepak/lazygit.nvim) | Terminal git UI |
 
@@ -149,10 +146,10 @@ nvim-setup/
 | Plugin | Description |
 |--------|-------------|
 | [toggleterm](https://github.com/akinsho/toggleterm.nvim) | Integrated terminal |
-| [which-key](https://github.com/folke/which-key.nvim) | Keybinding hints display |
+| [which-key](https://github.com/folke/which-key.nvim) | Keybinding hints |
 | [comment](https://github.com/numToStr/Comment.nvim) | Toggle comments |
 | [todo-comments](https://github.com/folke/todo-comments.nvim) | Highlight TODO/FIX/HACK |
-| [codeium](https://github.com/Exafunction/codeium.nvim) | AI code completion (free) |
+| [undotree](https://github.com/mbbill/undotree) | Undo history |
 
 ---
 
@@ -160,4 +157,3 @@ nvim-setup/
 
 See [KEYBINDINGS.md](./KEYBINDINGS.md) for the full keybindings reference.
 
----
