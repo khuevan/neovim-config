@@ -5,7 +5,11 @@ return {
   { "akinsho/bufferline.nvim", dependencies = "nvim-tree/nvim-web-devicons" },
   { "lukas-reineke/indent-blankline.nvim" },
   { "nvim-tree/nvim-tree.lua", dependencies = "nvim-tree/nvim-web-devicons" },
-  { "nvim-telescope/telescope.nvim", dependencies = "nvim-lua/plenary.nvim" },
+  { "nvim-telescope/telescope.nvim", dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope-project.nvim",
+    },
+  },
   { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
   { "neovim/nvim-lspconfig" },
   { "williamboman/mason.nvim" },

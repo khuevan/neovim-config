@@ -39,9 +39,9 @@ db.setup({
         icon = "📁 ",
       },
       {
-        desc = "Git Status",
-        key = "g",
-        action = "Neogit",
+        desc = "Open Project",
+        key = "Space + fp",
+        action = "Telescope projects",
         icon = "📦 ",
       },
       {
